@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>contact us</title>
+    <link rel="stylesheet" href="contactstyle.css" />
+    <script>
+      function validateform() {
+        var fname = document.forms.myform.fname.value;
+        var lname = document.forms.myform.lname.value;
+        var email = document.forms.myform.email.value;
+        var pwrd = document.forms.myform.pwrd.value;
+        var cpwrd = document.forms.myform.cpwrd.value;
+        if (fname == "") {
+          alert("fname can't be blank");
+          fname.focus();
+          return false;
+        } else if (lname == "") {
+          alert("lname can't br blank");
+          lname.focus();
+          return false;
+        } else if (email == "") {
+          alert("email can't be blank");
+          email.focus();
+          return false;
+        } else if (pwrd.length < 6) {
+          alert("weak,password must have atleast 6 characters");
+          pwrd.focus();
+          return false;
+        } else if (pwrd.length > 6 && pwrd.length < 10) {
+          alert("medium password");
+          pwrd.focus();
+          return false;
+        } else if (
+          pwrd.length > 10 ||
+          pwrd.search(/[A-Z]/) < 0 ||
+          pwrd.search(/[a-z]/) < 0 ||
+          pwrd.search(/[0-9]/) < 0 ||
+          pwrd.search(/[!@#$%&^*]/) < 0
+        ) {
+          alert(
+            "password must contain 1uppercase letter 1 lowercase letter 1 symbol and 1 number"
+          );
+          pwrd.focus();
+          return false;
+        } else if (cpwrd != pwrd) {
+          alert("passwords must be same");
+          cpwrd.focus();
+          return false;
+        } else {
+          return true;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form
+      name="myform"
+      action="success.js"
+      method="post"
+      onsubmit="return validateform()"
+      class="register"
+    >
+      <label for="fname">Firstname*</label><br />
+      <input type="text" name="fname" placeholder="firstname" /><br />
+      <label for="lname">Lastname:*</label><br />
+      <input type="text" name="lname" placeholder="lastname" /><br />
+      <label for="email">email id*</label><br />
+      <input type="email" name="email" placeholder="username@gmail.com" /><br />
+      <label for="password">password*</label><br />
+      <input type="password" name="pwrd" placeholder="enter password" /><br />
+      <label for="cpwrd">confirm password*</label><br />
+      <input
+        type="password"
+        name="cpwrd"
+        placeholder="reenter the password"
+      /><br />
+      <label for="phonenumber">phonenumber:*</label><br />
+      <input
+        type="tel"
+        name="phonenumber"
+        placeholder="86-103-52-953"
+        pattern="[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{3}"
+      /><br />
+      <label for="company">companyname*</label><br />
+      <input type="text" name="companyname" placeholder="company" /><br />
+
+      <label for="bussiness">bussiness*</label><br />
+      <input type="radio" name="business" value="manufacturer" />
+      <label for="manufacturer">manufacturer</label><br />
+      <input type="radio" name="business" value="retailer" />
+      <label for="retailer">retailer</label><br />
+      <input type="radio" name="business" value="distributor" />
+      <label for="distributor">distributor</label><br />
+      <label for="message">message</label><br />
+      <input
+        type="text"
+        class="message"
+        name="message"
+        placeholder="type some message"
+      /><br />
+      <input type="submit" value="submit" />
+    </form>
+  </body>
+</html>
